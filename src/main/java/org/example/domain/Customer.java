@@ -1,12 +1,8 @@
 package org.example.domain;
 
-import com.avaje.ebean.annotation.WhenCreated;
-import com.avaje.ebean.annotation.WhenModified;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Version;
-import java.time.OffsetDateTime;
 
 @Entity
 public class Customer {
@@ -20,12 +16,6 @@ public class Customer {
 
   @Version
   Long version;
-
-  @WhenCreated
-  OffsetDateTime whenCreated;
-
-  @WhenModified
-  OffsetDateTime whenModified;
 
   public Customer(String name) {
     this.name = name;
@@ -66,19 +56,4 @@ public class Customer {
     this.version = version;
   }
 
-  public OffsetDateTime getWhenCreated() {
-    return whenCreated;
-  }
-
-  public void setWhenCreated(OffsetDateTime whenCreated) {
-    this.whenCreated = whenCreated;
-  }
-
-  public OffsetDateTime getWhenModified() {
-    return whenModified;
-  }
-
-  public void setWhenModified(OffsetDateTime whenModified) {
-    this.whenModified = whenModified;
-  }
 }
