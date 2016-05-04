@@ -5,6 +5,7 @@
 .project
 .settings/
 target/
+test-output/
 logs/
 log/
 ebean-autotune.xml
