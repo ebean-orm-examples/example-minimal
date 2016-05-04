@@ -1,6 +1,7 @@
 *.autofetch
 *.sql
 *.orig
+*.db
 .classpath
 .project
 .settings/
