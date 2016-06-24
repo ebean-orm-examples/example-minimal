@@ -4,18 +4,16 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertNotNull;
 
 /**
  * When running tests in the IDE install the "Enhancement plugin".
- *
+ * <p>
  * http://ebean-orm.github.io/docs/setup/enhancement#ide
- *
  */
 public class CustomerTest {
 
   Customer rob;
-
   /**
    * Get the "default server" and save().
    */
