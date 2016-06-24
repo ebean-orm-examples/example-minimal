@@ -13,7 +13,7 @@ public class Customer {
   String name;
 
   String notes;
-
+  
   @Version
   Long version;
 

@@ -2,6 +2,7 @@
 *.sql
 *.orig
 *.db
+.factorypath
 .classpath
 .project
 .settings/
@@ -20,3 +21,4 @@ ebean-profiling*.xml
 
 # JRebel config
 rebel.xml
+/.apt_generated/
