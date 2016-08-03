@@ -9,7 +9,7 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <ebeanorm-enhancement.plugin.args>debug=2</ebeanorm-enhancement.plugin.args>
+    <ebean-maven-plugin.args>debug=2</ebean-maven-plugin.args>
   </properties>
 
   <dependencies>
@@ -21,25 +21,32 @@
     </dependency>
 
     <dependency>
-      <groupId>org.avaje.ebeanorm</groupId>
-      <artifactId>avaje-ebeanorm</artifactId>
-      <version>7.16.1</version>
+      <groupId>org.avaje.ebean</groupId>
+      <artifactId>ebean</artifactId>
+      <version>8.1.1</version>
     </dependency>
 
     <dependency>
-      <groupId>org.avaje.ebeanorm</groupId>
-      <artifactId>avaje-ebeanorm-querybean</artifactId>
-      <version>7.14.1</version>
+      <groupId>org.avaje.ebean</groupId>
+      <artifactId>ebean-querybean</artifactId>
+      <version>8.1.1</version>
     </dependency>
 
     <dependency>
-      <groupId>org.avaje.ebeanorm</groupId>
+      <groupId>org.avaje.ebean</groupId>
       <artifactId>querybean-generator</artifactId>
-      <version>2.2.1</version>
+      <version>8.1.1</version>
       <scope>provided</scope>
     </dependency>
 
     <!-- test dependencies -->
+
+    <dependency>
+      <groupId>org.avaje.ebean</groupId>
+      <artifactId>ebean-mocker</artifactId>
+      <version>8.1.1</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
       <groupId>org.avaje.composite</groupId>
@@ -61,7 +68,7 @@
         <configuration>
           <tiles>
             <tile>org.avaje.tile:java-compile:1.1</tile>
-            <tile>org.avaje.tile:ebean-enhancement:1.4</tile>
+            <tile>org.avaje.ebean.tile:enhancement:1.1</tile>
           </tiles>
         </configuration>
       </plugin>
