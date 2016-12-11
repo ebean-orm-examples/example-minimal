@@ -1,7 +1,7 @@
 package org.example.domain;
 
-import com.avaje.ebean.Ebean;
-import com.avaje.ebean.EbeanServer;
+import io.ebean.Ebean;
+import io.ebean.EbeanServer;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertNotNull;

@@ -1,16 +1,14 @@
 package main;
 
-import com.avaje.ebean.config.Platform;
-import com.avaje.ebean.dbmigration.DbMigration;
-
-import java.io.IOException;
+import io.ebean.Platform;
+import io.ebean.dbmigration.DbMigration;
 
 /**
  * Generate the DB Migration.
  */
 public class MainDbMigration {
 
-  public static void main(String[] args) throws IOException, InterruptedException {
+  public static void main(String[] args) throws Exception {
 
     // optionally specify the version and name
     //System.setProperty("ddl.migration.version", "1.2_33");
