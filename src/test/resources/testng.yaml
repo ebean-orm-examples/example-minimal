@@ -1,0 +1,6 @@
+name: SingleSuite
+
+tests:
+  - name: Regression1
+    packages:
+     - org.example.domain
