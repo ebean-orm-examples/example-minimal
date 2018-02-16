@@ -49,7 +49,7 @@ public class CustomerTest {
 
     Customer rob = Ebean.find(Customer.class)
         .where().eq("name", "Rob")
-        .findUnique();
+        .findOne();
 
     rob.setNotes("Doing an update");
     Ebean.save(rob);
