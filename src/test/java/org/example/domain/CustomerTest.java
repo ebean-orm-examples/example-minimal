@@ -2,9 +2,10 @@ package org.example.domain;
 
 import io.ebean.Ebean;
 import io.ebean.EbeanServer;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
-import static org.testng.Assert.assertNotNull;
+import static org.junit.Assert.assertNotNull;
+
 
 /**
  * When running tests in the IDE install the "Enhancement plugin".
@@ -13,14 +14,15 @@ import static org.testng.Assert.assertNotNull;
  */
 public class CustomerTest {
 
-  Customer rob;
+
+
   /**
    * Get the "default server" and save().
    */
   @Test
   public void insert_via_server() {
 
-    rob = new Customer("Rob");
+    Customer rob = new Customer("Rob");
 
     EbeanServer server = Ebean.getDefaultServer();
     server.save(rob);
@@ -31,7 +33,7 @@ public class CustomerTest {
   /**
    * Use the Ebean singleton (effectively using the "default server").
    */
-  @Test(dependsOnMethods = "insert_via_server")
+  @Test
   public void insert_via_ebean() {
 
     Customer jim = new Customer("Jim");
@@ -44,25 +46,31 @@ public class CustomerTest {
   /**
    * Find and then update.
    */
-  @Test(dependsOnMethods = "insert_via_server")
+  @Test
   public void updateRob() {
 
-    Customer rob = Ebean.find(Customer.class)
-        .where().eq("name", "Rob")
+    Customer newBob = new Customer("Bob");
+    Ebean.save(newBob);
+
+    Customer bob = Ebean.find(Customer.class)
+        .where().eq("name", "Bob")
         .findOne();
 
-    rob.setNotes("Doing an update");
-    Ebean.save(rob);
+    bob.setNotes("Doing an update");
+    Ebean.save(bob);
   }
 
   /**
    * Execute an update without a prior query.
    */
-  @Test(dependsOnMethods = "updateRob")
+  @Test
   public void statelessUpdate() {
 
+    Customer newMob = new Customer("Mob");
+    Ebean.save(newMob);
+
     Customer upd = new Customer();
-    upd.setId(rob.getId());
+    upd.setId(newMob.getId());
     upd.setNotes("Update without a fetch");
 
     Ebean.update(upd);

@@ -2,7 +2,7 @@ package org.example.domain;
 
 import io.ebean.Ebean;
 import org.example.domain.query.QCustomer;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 public class CustomerQueryTest {
 
