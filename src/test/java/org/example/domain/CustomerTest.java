@@ -1,7 +1,7 @@
 package org.example.domain;
 
-import io.ebean.Ebean;
-import io.ebean.EbeanServer;
+import io.ebean.DB;
+import io.ebean.Database;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
@@ -15,16 +15,15 @@ import static org.junit.Assert.assertNotNull;
 public class CustomerTest {
 
 
-
   /**
-   * Get the "default server" and save().
+   * Get the "default database" and save().
    */
   @Test
   public void insert_via_server() {
 
     Customer rob = new Customer("Rob");
 
-    EbeanServer server = Ebean.getDefaultServer();
+    Database server = DB.getDefault();
     server.save(rob);
 
     assertNotNull(rob.getId());
@@ -34,10 +33,10 @@ public class CustomerTest {
    * Use the Ebean singleton (effectively using the "default server").
    */
   @Test
-  public void insert_via_ebean() {
+  public void insert_via_DB() {
 
     Customer jim = new Customer("Jim");
-    Ebean.save(jim);
+    DB.save(jim);
 
     assertNotNull(jim.getId());
   }
@@ -50,14 +49,14 @@ public class CustomerTest {
   public void updateRob() {
 
     Customer newBob = new Customer("Bob");
-    Ebean.save(newBob);
+    DB.save(newBob);
 
-    Customer bob = Ebean.find(Customer.class)
-        .where().eq("name", "Bob")
-        .findOne();
+    Customer bob = DB.find(Customer.class)
+      .where().eq("name", "Bob")
+      .findOne();
 
     bob.setNotes("Doing an update");
-    Ebean.save(bob);
+    DB.save(bob);
   }
 
   /**
@@ -67,13 +66,13 @@ public class CustomerTest {
   public void statelessUpdate() {
 
     Customer newMob = new Customer("Mob");
-    Ebean.save(newMob);
+    DB.save(newMob);
 
     Customer upd = new Customer();
     upd.setId(newMob.getId());
     upd.setNotes("Update without a fetch");
 
-    Ebean.update(upd);
+    DB.update(upd);
   }
 
 }
