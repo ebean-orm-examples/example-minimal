@@ -23,7 +23,7 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>12.1.8</version>
+      <version>12.1.9-SNAPSHOT</version>
     </dependency>
 
     <!-- optionally add query beans -->
@@ -39,6 +39,12 @@
       <artifactId>querybean-generator</artifactId>
       <version>12.1.8</version>
       <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
+      <version>7.4.1.jre11</version>
     </dependency>
 
     <!-- test dependencies -->
