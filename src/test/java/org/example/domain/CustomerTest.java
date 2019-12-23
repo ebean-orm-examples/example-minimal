@@ -33,10 +33,10 @@ public class CustomerTest {
    * Use the Ebean singleton (effectively using the "default server").
    */
   @Test
-  public void insert_via_DB() {
+  public void insert_via_model() {
 
     Customer jim = new Customer("Jim");
-    DB.save(jim);
+    jim.save();
 
     assertNotNull(jim.getId());
   }
@@ -49,14 +49,14 @@ public class CustomerTest {
   public void updateRob() {
 
     Customer newBob = new Customer("Bob");
-    DB.save(newBob);
+    newBob.save();
 
     Customer bob = DB.find(Customer.class)
       .where().eq("name", "Bob")
       .findOne();
 
     bob.setNotes("Doing an update");
-    DB.save(bob);
+    bob.save();
   }
 
   /**
@@ -66,13 +66,13 @@ public class CustomerTest {
   public void statelessUpdate() {
 
     Customer newMob = new Customer("Mob");
-    DB.save(newMob);
+    newMob.save();
 
     Customer upd = new Customer();
     upd.setId(newMob.getId());
     upd.setNotes("Update without a fetch");
 
-    DB.update(upd);
+    upd.update();
   }
 
 }

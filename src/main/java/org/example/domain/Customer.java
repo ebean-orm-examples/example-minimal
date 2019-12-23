@@ -1,11 +1,13 @@
 package org.example.domain;
 
+import io.ebean.Model;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
 @Entity
-public class Customer {
+public class Customer extends Model {
 
   @Id
   Long id;
