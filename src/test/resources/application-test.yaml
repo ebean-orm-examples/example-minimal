@@ -1,7 +1,12 @@
 ebean:
   test:
-#    useDocker: false
+    useDocker: false
 #    shutdown: stop # stop | remove
-    platform: h2 # h2, postgres, mysql, oracle, sqlserver, sqlite
+    platform: postgres # h2, postgres, mysql, oracle, sqlserver, sqlite
     ddlMode: dropCreate # none | dropCreate | create | migration | createOnly | migrationDropCreate
     dbName: myapp
+    postgres:
+      username: postgres
+      password: postgres
+      url: jdbc:postgresql://localhost:5432/
+
