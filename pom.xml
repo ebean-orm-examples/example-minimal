@@ -23,21 +23,21 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>12.1.8</version>
+      <version>12.3.3</version>
     </dependency>
 
     <!-- optionally add query beans -->
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean-querybean</artifactId>
-      <version>12.1.8</version>
+      <version>12.3.3</version>
     </dependency>
 
     <!-- java annotation processor to generate query beans -->
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>querybean-generator</artifactId>
-      <version>12.1.8</version>
+      <version>12.3.3</version>
       <scope>provided</scope>
     </dependency>
 
@@ -46,9 +46,17 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean-test</artifactId>
-      <version>12.1.8</version>
+      <version>12.3.3</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.ebean.test/ebean-test-docker -->
+    <dependency>
+      <groupId>io.ebean.test</groupId>
+      <artifactId>ebean-test-docker</artifactId>
+      <version>3.1.5</version>
+    </dependency>
+
 
     <dependency>
       <groupId>org.avaje.composite</groupId>
