@@ -2,9 +2,9 @@ package org.example.domain;
 
 import io.ebean.DB;
 import io.ebean.Database;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 /**
@@ -19,7 +19,7 @@ public class CustomerTest {
    * Get the "default database" and save().
    */
   @Test
-  public void insert_via_server() {
+  public void insert_via_database() {
 
     Customer rob = new Customer("Rob");
 
