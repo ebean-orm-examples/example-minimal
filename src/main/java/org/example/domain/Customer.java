@@ -2,9 +2,11 @@ package org.example.domain;
 
 import io.ebean.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Version;
+import java.time.ZonedDateTime;
 
 @Entity
 public class Customer extends Model {
@@ -16,6 +18,9 @@ public class Customer extends Model {
 
   String notes;
 
+  @Column(name = "MyDate", nullable = false)
+  ZonedDateTime mydate;
+
   @Version
   Long version;
 
@@ -26,36 +31,25 @@ public class Customer extends Model {
   public Customer() {
   }
 
-  public Long getId() {
+  public Long id() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void id(Long id) {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getNotes() {
-    return notes;
-  }
-
-  public void setNotes(String notes) {
+  public void notes(String notes) {
     this.notes = notes;
   }
 
-  public Long getVersion() {
-    return version;
+  public ZonedDateTime mydate() {
+    return mydate;
   }
 
-  public void setVersion(Long version) {
-    this.version = version;
+  public Customer mydate(ZonedDateTime mydate) {
+    this.mydate = mydate;
+    return this;
   }
 
 }

@@ -4,6 +4,8 @@ import io.ebean.DB;
 import io.ebean.Database;
 import org.junit.jupiter.api.Test;
 
+import java.time.ZonedDateTime;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -22,11 +24,12 @@ public class CustomerTest {
   public void insert_via_database() {
 
     Customer rob = new Customer("Rob");
+    rob.mydate(ZonedDateTime.now());
 
     Database server = DB.getDefault();
     server.save(rob);
 
-    assertNotNull(rob.getId());
+    assertNotNull(rob.id());
   }
 
   /**
@@ -36,9 +39,10 @@ public class CustomerTest {
   public void insert_via_model() {
 
     Customer jim = new Customer("Jim");
+    jim.mydate(ZonedDateTime.now());
     jim.save();
 
-    assertNotNull(jim.getId());
+    assertNotNull(jim.id());
   }
 
 
@@ -49,13 +53,14 @@ public class CustomerTest {
   public void updateRob() {
 
     Customer newBob = new Customer("Bob");
+    newBob.mydate(ZonedDateTime.now());
     newBob.save();
 
     Customer bob = DB.find(Customer.class)
       .where().eq("name", "Bob")
       .findOne();
 
-    bob.setNotes("Doing an update");
+    bob.notes("Doing an update");
     bob.save();
   }
 
@@ -66,11 +71,12 @@ public class CustomerTest {
   public void statelessUpdate() {
 
     Customer newMob = new Customer("Mob");
+    newMob.mydate(ZonedDateTime.now());
     newMob.save();
 
     Customer upd = new Customer();
-    upd.setId(newMob.getId());
-    upd.setNotes("Update without a fetch");
+    upd.id(newMob.id());
+    upd.notes("Update without a fetch");
 
     upd.update();
   }
