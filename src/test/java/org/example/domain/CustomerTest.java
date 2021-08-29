@@ -1,10 +1,11 @@
 package org.example.domain;
 
-import io.ebean.Ebean;
-import io.ebean.EbeanServer;
-import org.testng.annotations.Test;
+import io.ebean.DB;
+import io.ebean.Database;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 /**
  * When running tests in the IDE install the "Enhancement plugin".
@@ -13,16 +14,16 @@ import static org.testng.Assert.assertNotNull;
  */
 public class CustomerTest {
 
-  Customer rob;
+
   /**
-   * Get the "default server" and save().
+   * Get the "default database" and save().
    */
   @Test
-  public void insert_via_server() {
+  public void insert_via_database() {
 
-    rob = new Customer("Rob");
+    Customer rob = new Customer("Rob");
 
-    EbeanServer server = Ebean.getDefaultServer();
+    Database server = DB.getDefault();
     server.save(rob);
 
     assertNotNull(rob.getId());
@@ -31,11 +32,11 @@ public class CustomerTest {
   /**
    * Use the Ebean singleton (effectively using the "default server").
    */
-  @Test(dependsOnMethods = "insert_via_server")
-  public void insert_via_ebean() {
+  @Test
+  public void insert_via_model() {
 
     Customer jim = new Customer("Jim");
-    Ebean.save(jim);
+    jim.save();
 
     assertNotNull(jim.getId());
   }
@@ -44,28 +45,34 @@ public class CustomerTest {
   /**
    * Find and then update.
    */
-  @Test(dependsOnMethods = "insert_via_server")
+  @Test
   public void updateRob() {
 
-    Customer rob = Ebean.find(Customer.class)
-        .where().eq("name", "Rob")
-        .findUnique();
+    Customer newBob = new Customer("Bob");
+    newBob.save();
 
-    rob.setNotes("Doing an update");
-    Ebean.save(rob);
+    Customer bob = DB.find(Customer.class)
+      .where().eq("name", "Bob")
+      .findOne();
+
+    bob.setNotes("Doing an update");
+    bob.save();
   }
 
   /**
    * Execute an update without a prior query.
    */
-  @Test(dependsOnMethods = "updateRob")
+  @Test
   public void statelessUpdate() {
 
+    Customer newMob = new Customer("Mob");
+    newMob.save();
+
     Customer upd = new Customer();
-    upd.setId(rob.getId());
+    upd.setId(newMob.getId());
     upd.setNotes("Update without a fetch");
 
-    Ebean.update(upd);
+    upd.update();
   }
 
 }
