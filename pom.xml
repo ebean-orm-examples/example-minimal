@@ -41,6 +41,13 @@
     <!-- test dependencies -->
 
     <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
+      <version>9.4.0.jre8</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean-test</artifactId>
       <version>12.11.1</version>
