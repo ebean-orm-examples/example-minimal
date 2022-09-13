@@ -13,6 +13,7 @@
       <column name="id" type="varchar" primaryKey="true" notnull="true"/>
       <column name="name" type="varchar"/>
       <column name="environment" type="varchar"/>
+      <column name="deleted" type="boolean"/>
     </createTable>
 
     <createTable name="environment">
