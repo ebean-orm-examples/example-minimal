@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>example-mininal</artifactId>
+  <artifactId>minimal-bug-reproduction</artifactId>
   <version>1.1-SNAPSHOT</version>
 
   <properties>
@@ -14,6 +14,7 @@
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
+    <ebean-version>13.8.0</ebean-version>
   </properties>
 
   <dependencies>
@@ -27,14 +28,20 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>12.11.1</version>
+      <version>${ebean-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.28</version>
     </dependency>
 
     <!-- java annotation processor to generate query beans -->
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>querybean-generator</artifactId>
-      <version>12.11.1</version>
+      <version>${ebean-version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -43,7 +50,7 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean-test</artifactId>
-      <version>12.11.1</version>
+      <version>${ebean-version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -75,7 +82,7 @@
         <configuration>
           <tiles>
             <tile>org.avaje.tile:java-compile:11</tile>
-            <tile>io.ebean.tile:enhancement:12.11.1</tile>
+            <tile>io.ebean.tile:enhancement:${ebean-version}</tile>
           </tiles>
         </configuration>
       </plugin>

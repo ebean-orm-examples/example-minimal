@@ -1,0 +1,25 @@
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<migration xmlns="http://ebean-orm.github.io/xml/ns/dbmigration">
+  <changeSet type="apply">
+
+    <createTable name="usage_raw">
+      <column name="id" type="varchar" primaryKey="true" notnull="true"/>
+      <column name="serviceAccount" type="varchar"/>
+      <column name="name" type="varchar"/>
+    </createTable>
+
+    <createTable name="service_account">
+      <column name="id" type="varchar" primaryKey="true" notnull="true"/>
+      <column name="name" type="varchar"/>
+      <column name="environment" type="varchar"/>
+    </createTable>
+
+    <createTable name="environment">
+      <column name="id" type="varchar" primaryKey="true" notnull="true"/>
+      <column name="name" type="varchar"/>
+      <column name="deleted" type="boolean"/>
+    </createTable>
+
+  </changeSet>
+</migration>
