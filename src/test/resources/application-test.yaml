@@ -4,8 +4,8 @@ ebean:
     platform: mysql # h2, postgres, mysql, oracle, sqlserver
     dbName: test
     mysql:
-      username: cloudmc
-      password: cloudmc
+      username: your-username
+      password: your-password
       url: jdbc:mysql://localhost:3306/test
       collation: utf8mb4_unicode_ci
       characterSet: utf8mb4
