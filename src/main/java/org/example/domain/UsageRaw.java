@@ -2,6 +2,7 @@ package org.example.domain;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -13,7 +14,7 @@ public class UsageRaw extends Model {
   @Id
   private UUID id;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.REMOVE)
   private ServiceAccount serviceAccount;
 
   private String name;

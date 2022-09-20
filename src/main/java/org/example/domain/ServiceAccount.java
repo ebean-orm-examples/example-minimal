@@ -2,8 +2,10 @@ package org.example.domain;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import io.ebean.Model;
@@ -14,7 +16,7 @@ public class ServiceAccount extends Model {
   @Id
   private UUID id;
 
-  @OneToOne
+  @ManyToOne(cascade = CascadeType.REMOVE)
   private Environment environment;
 
   @SoftDelete
