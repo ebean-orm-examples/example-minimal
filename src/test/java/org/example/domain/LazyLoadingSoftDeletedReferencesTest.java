@@ -68,6 +68,7 @@ public class LazyLoadingSoftDeletedReferencesTest {
    *
    * Also demonstrates workaround that yield desired results.
    */
+
   @Test
   public void fetchLazy_with_multiple_paths_does_not_fetch_deep_relations_that_are_softdeleted() {
     // given: existing usage
@@ -100,6 +101,18 @@ public class LazyLoadingSoftDeletedReferencesTest {
     assert(lazyUsageSinglePath.size() == 2);
     assert(lazyUsageSinglePath.stream().allMatch(accountLoaded()));
     assert(lazyUsageSinglePath.stream().allMatch(environmentLoaded()));
+
+    // demonstrates other workaround, use fetch() for environment, all required properties are loaded
+    // when: lazy fetching serviceAccount.environment
+    List<UsageRaw> lazyUsageMultiplePathsWithFetch = server.find(UsageRaw.class)
+      .setIncludeSoftDeletes()
+      .fetchLazy("serviceAccount")
+      .fetch("serviceAccount.environment")
+      .findList();
+    // then: soft-deleted environments loaded
+    assert(lazyUsageMultiplePathsWithFetch.size() == 2);
+    assert(lazyUsageMultiplePathsWithFetch.stream().allMatch(accountLoaded()));
+    assert(lazyUsageMultiplePathsWithFetch.stream().allMatch(environmentLoaded()));
 
     // demonstrates that eager fetching works when multiple paths are used
     // when: eagerly fetching serviceAccount AND serviceAccount.environment
