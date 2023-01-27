@@ -1,7 +1,11 @@
 ebean:
   test:
-#    useDocker: false
-#    shutdown: stop # stop | remove
-    platform: h2 # h2, postgres, mysql, oracle, sqlserver, sqlite
-    ddlMode: dropCreate # none | dropCreate | create | migration | createOnly | migrationDropCreate
-    dbName: myapp
+    useDocker: true
+    platform: mysql # h2, postgres, mysql, oracle, sqlserver
+    dbName: test
+    mysql:
+      username: your-username
+      password: your-password
+      url: jdbc:mysql://localhost:3306/test
+      collation: utf8mb4_unicode_ci
+      characterSet: utf8mb4
