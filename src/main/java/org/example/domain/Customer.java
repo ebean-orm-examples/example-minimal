@@ -10,27 +10,31 @@ import javax.persistence.Version;
 public class Customer extends Model {
 
   @Id
-  Long id;
+  long id;
 
   String name;
 
   String notes;
 
   @Version
-  Long version;
+  long version;
 
   public Customer(String name) {
     this.name = name;
   }
 
+  /**
+   * Only used to demonstrate "stateless update".
+   */
   public Customer() {
+
   }
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -50,11 +54,11 @@ public class Customer extends Model {
     this.notes = notes;
   }
 
-  public Long getVersion() {
+  public long getVersion() {
     return version;
   }
 
-  public void setVersion(Long version) {
+  public void setVersion(long version) {
     this.version = version;
   }
 
