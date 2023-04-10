@@ -4,7 +4,7 @@ import io.ebean.DB;
 import io.ebean.Database;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 /**
@@ -12,33 +12,33 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * <p>
  * http://ebean-orm.github.io/docs/setup/enhancement#ide
  */
-public class CustomerTest {
+class CustomerTest {
 
 
   /**
    * Get the "default database" and save().
    */
   @Test
-  public void insert_via_database() {
+  void insert_via_database() {
 
     Customer rob = new Customer("Rob");
 
     Database server = DB.getDefault();
     server.save(rob);
 
-    assertNotNull(rob.getId());
+    assertThat(rob.getId()).isGreaterThan(0);
   }
 
   /**
    * Use the Ebean singleton (effectively using the "default server").
    */
   @Test
-  public void insert_via_model() {
+  void insert_via_model() {
 
     Customer jim = new Customer("Jim");
     jim.save();
 
-    assertNotNull(jim.getId());
+    assertThat(jim.getId()).isGreaterThan(0);
   }
 
 
@@ -46,7 +46,7 @@ public class CustomerTest {
    * Find and then update.
    */
   @Test
-  public void updateRob() {
+  void updateRob() {
 
     Customer newBob = new Customer("Bob");
     newBob.save();
@@ -63,7 +63,7 @@ public class CustomerTest {
    * Execute an update without a prior query.
    */
   @Test
-  public void statelessUpdate() {
+  void statelessUpdate() {
 
     Customer newMob = new Customer("Mob");
     newMob.save();

@@ -4,10 +4,10 @@ import io.ebean.DB;
 import org.example.domain.query.QCustomer;
 import org.junit.jupiter.api.Test;
 
-public class CustomerQueryTest {
+class CustomerQueryTest {
 
   @Test
-  public void findAll() {
+  void findAll() {
 
     DB.find(Customer.class)
         .findList();
